@@ -59,4 +59,4 @@ void print_list(const listint_t *list)
     printf("\n");
 }
 void bubble_sort(int *array, size_t size);
-#endif SORT_H
+#endif
