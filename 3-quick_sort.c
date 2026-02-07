@@ -26,7 +26,7 @@ void quick_sort(int *array, size_t size)
 			{
 				n_left++;
 				left = realloc(left, n_left * sizeof(int));
-				left[n_left - 1] = array[i];
+				left[n_left - 1] = array[i]; 
 			}
 			else if (array[i] > array[pivot])
 			{
@@ -42,6 +42,7 @@ void quick_sort(int *array, size_t size)
 		array[n_left] = pivotv;
 		for (i = 0; i < n_right; i++)
 			array[n_left + 1 + i] = right[i];
+		print_array(array,size);
 		free(left);
 		free(right);
 	}
