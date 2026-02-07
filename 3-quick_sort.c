@@ -18,7 +18,7 @@ void quick_sort(int *array, size_t size)
 
 	if (size > 1)
 	{
-		for (i = 0; i < size; i++)
+		for (i = 0; i < size - 1; i++)
 		{
 			if (array[i] < array[pivot])
 			{
