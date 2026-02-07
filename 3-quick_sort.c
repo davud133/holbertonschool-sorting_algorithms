@@ -1,5 +1,70 @@
 #include "sort.h"
 /**
+ * swap - swaps 2 element
+ * @a: element 1
+ * @b: element 2
+ *
+ * Return nothing
+ */
+void swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+/**
+ * lomuto - helper
+ * @array: array
+ * @low: low point
+ * @high: high point
+ * @size: size
+ *
+ * Return: index
+ */
+size_t lomuto(int *array, size_t low, size_t high, size_t size)
+{
+	int pivot = array[high];
+	size_t i = low;
+
+    	for (size_t j = low; j < high; j++)
+	{
+		if (array[j] < pivot)
+		{
+			if (i != j)
+            		{
+                		swap(&array[i], &array[j]);
+                		print_array(array, size);
+            		}
+            		i++;
+		}
+	}
+	if (i != high)
+	{
+	swap(&array[i], &array[high]);
+	print_array(array, size);
+	}
+	return i;
+}
+/**
+ * quick_sort_rec - helper
+ * @array: array
+ * @low: low
+ * @high: high
+ * @size: size
+ *
+ * Return: nothing
+ */
+void quick_sort_rec(int *array, size_t low, size_t high, size_t size)
+{
+    	if (low < high)
+	{
+			size_t pivot_index = lomuto_partition(array, low, high, size);
+		if (pivot_index > 0)
+			quick_sort_rec(array, low, pivot_index - 1, size);
+		quick_sort_rec(array, pivot_index + 1, high, size);
+	}
+}
+/**
  * quick_sort - sorts an array using quick sort algorithm
  * @array: array
  * @size: size of the array
@@ -8,42 +73,7 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int *left = NULL;
-	size_t n_left = 0;
-	int *right = NULL;
-	size_t n_right = 0;
-	size_t pivot;
-	int pivotv;
-	size_t i;
-
-	if (size > 1)
-	{
-		pivot = size - 1;
-		pivotv = array[pivot];
-		for (i = 0; i < size - 1; i++)
-		{
-			if (array[i] < array[pivot])
-			{
-				n_left++;
-				left = realloc(left, n_left * sizeof(int));
-				left[n_left - 1] = array[i]; 
-			}
-			else if (array[i] > array[pivot])
-			{
-				n_right++;
-				right = realloc(right, n_right * sizeof(int));
-				right[n_right - 1] = array[i];
-			}
-		}
-		quick_sort(left, n_left);
-		quick_sort(right, n_right);
-		for (i = 0; i < n_left; i++)
-    			array[i] = left[i];
-		array[n_left] = pivotv;
-		for (i = 0; i < n_right; i++)
-			array[n_left + 1 + i] = right[i];
-		print_array(array,size);
-		free(left);
-		free(right);
-	}
+	if (!array || size < 2)
+        	return;
+	quick_sort_rec(array, 0, size - 1, size);
 }
