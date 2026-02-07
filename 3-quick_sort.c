@@ -8,8 +8,10 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int *left = NULL, n_left = 1;
-	int *right = NULL, n_right = 1;
+	int *left = NULL;
+	size_t n_left = 1;
+	int *right = NULL;
+	size_t n_right = 1;
 	size_t pivot = size - 1;
 	int pivotv = array[pivot];
 	size_t i;
