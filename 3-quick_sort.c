@@ -25,8 +25,9 @@ size_t lomuto(int *array, size_t low, size_t high, size_t size)
 {
 	int pivot = array[high];
 	size_t i = low;
+	size_t j = 0;
 
-    	for (size_t j = low; j < high; j++)
+    	for (j = low; j < high; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -58,7 +59,7 @@ void quick_sort_rec(int *array, size_t low, size_t high, size_t size)
 {
     	if (low < high)
 	{
-			size_t pivot_index = lomuto_partition(array, low, high, size);
+			size_t pivot_index = lomuto(array, low, high, size);
 		if (pivot_index > 0)
 			quick_sort_rec(array, low, pivot_index - 1, size);
 		quick_sort_rec(array, pivot_index + 1, high, size);
