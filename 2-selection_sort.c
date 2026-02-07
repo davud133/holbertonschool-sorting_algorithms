@@ -31,5 +31,4 @@ void selection_sort(int *array, size_t size)
 		current++;
 		min_index = current;
 	}
-}
-		
+}	
