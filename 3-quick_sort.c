@@ -9,12 +9,13 @@
 void quick_sort(int *array, size_t size)
 {
 	int *left = NULL;
-	size_t n_left = 1;
+	size_t n_left = 0;
 	int *right = NULL;
-	size_t n_right = 1;
+	size_t n_right = 0;
 	size_t pivot = size - 1;
 	int pivotv = array[pivot];
 	size_t i;
+
 	if (size > 1)
 	{
 		for (i = 0; i < size; i++)
