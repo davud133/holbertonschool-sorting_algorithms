@@ -44,7 +44,7 @@ size_t lomuto(int *array, size_t low, size_t high, size_t size)
 		swap(&array[i], &array[high]);
 		print_array(array, size);
 	}
-	return i;
+	return (i);
 }
 /**
  * quick_sort_rec - helper
@@ -59,7 +59,7 @@ void quick_sort_rec(int *array, size_t low, size_t high, size_t size)
 {
 	if (low < high)
 	{
-			size_t pivot_index = lomuto(array, low, high, size);
+		size_t pivot_index = lomuto(array, low, high, size);
 		if (pivot_index > 0)
 			quick_sort_rec(array, low, pivot_index - 1, size);
 		quick_sort_rec(array, pivot_index + 1, high, size);
